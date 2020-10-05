@@ -1,0 +1,39 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "tamponi.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+########################################################################################
+
+set ylabel "tamponi positivi"           @labelFONT
+set ytic                    @scaleFONT 
+set xtic scale 0                @scaleFONT
+set size 1.0, 1.0
+set yrange [0:]
+########################################################################################
+set xdata time
+set timefmt "%m/%d/%y"
+set format x "%d/%m"
+set timefmt "%m/%d/%y %H:%M"
+set format y "%g%%"
+
+set grid
+set key top center
+set style fill solid 1.0 border -1
+set boxwidth 0.6 relative
+
+#####################################################################################
+set y2label 'tamponi giornalieri' @labelFONT
+set y2tic
+set y2range [0:]
+
+plot  "tassovirus.dat" using 1:4 with boxes  lt rgb "#7fffd4" ti "tamponi totali" axes x1y2, "tassovirus.dat" using 1:3 w p lt rgb "black" lw 3 ti "tasso tamponi positivi", "tassovirus.dat" using 1:14 w l lt rgb "red" lw 3 ti "tasso tamponi positivi (media 7gg)"
+
+#####################################################################################
+set output "tamponigiu.png"
+set xrange ["06/04/2020":]
+plot  "tassovirus.dat" using 1:4 with boxes  lt rgb "#7fffd4" ti "tamponi totali" axes x1y2, "tassovirus.dat" using 1:3 w p lt rgb "black" lw 3 ti "tasso tamponi positivi", "tassovirus.dat" using 1:14 w l lt rgb "red" lw 3 ti "tasso tamponi positivi (media 7gg)"

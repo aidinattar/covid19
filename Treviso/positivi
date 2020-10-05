@@ -1,0 +1,36 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "casi.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+########################################################################################
+
+set ylabel "numero casi"           @labelFONT
+set ytic                    @scaleFONT 
+set xtic scale 0                @scaleFONT
+set size 1.0, 1.0
+set yrange [0:]
+########################################################################################
+set xdata time
+set timefmt "%m/%d/%y"
+set format x "%d/%m"
+set timefmt "%m/%d/%y %H:%M"
+
+set grid
+set key top center
+set style fill solid 1.0 border -1
+#set boxwidth 0.9 relative
+
+#####################################################################################
+#set y2label 'casi giornalieri' @labelFONT
+#set y2tic
+#set y2range [0:]
+plot "casi.dat" using 1:3 with boxes ti "casi totali" lt rgb "green" lw -1
+set output "casigiorn.png"
+unset logscale
+plot  "casi.dat" using 1:4 w boxes lt rgb "red" lw 3 ti "casi giornalieri"
+

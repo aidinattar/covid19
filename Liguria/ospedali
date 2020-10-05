@@ -1,0 +1,38 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "ospedale.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+########################################################################################
+
+set ylabel "totale casi ospedalizzati"           @labelFONT
+set ytic                    @scaleFONT 
+set xtic scale 0                @scaleFONT
+set size 1.0, 1.0
+set yrange [0:]
+########################################################################################
+set xdata time
+set timefmt "%m/%d/%y"
+set format x "%d/%m"
+set timefmt "%m/%d/%y %H:%M"
+
+set grid
+set key top center
+set style fill solid 1.0 border -1
+set boxwidth 1 relative
+
+f(x) = 97
+g(x) = 47634
+
+plot  "tassovirus.dat" using 1:7 with boxes  lt rgb "green" lw 2 ti "ricoverati con sintomi", "tassovirus.dat" using 1:6 w boxes lt rgb "red" lw 2 ti "terapie intensive", f(x) ti "totale posti terapia intensiva" lt rgb "black" lw 3
+
+#####################################################################################
+set output "ospedaligiu.png"
+set xrange ["07/04/2020":]
+
+set boxwidth 0.6 relative
+plot  "tassovirus.dat" using 1:7 with boxes  lt rgb "green" lw 2 ti "ricoverati con sintomi", "tassovirus.dat" using 1:6 w boxes lt rgb "red" lw 2 ti "terapie intensive", f(x) ti "totale posti terapia intensiva" lt rgb "black" lw 3
