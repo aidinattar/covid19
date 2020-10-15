@@ -36,4 +36,5 @@ plot  "tassovirus.dat" using 1:16 w p lt rgb "green" lw 3 ti "morti giornalieri"
 #####################################################################################
 set output "positivigiu.png"
 set xrange ["06/04/2020":]
+#set logscale y
 plot  "tassovirus.dat" using 1:16 w p lt rgb "green" lw 3 ti "morti giornalieri" axes x1y2, "tassovirus.dat" using 1:17 w l lt rgb "black" lw 3 noti axes x1y2, "tassovirus.dat" using 1:10 w p lt rgb "red" lw 3 ti "tamponi positivi", "tassovirus.dat" using 1:15 w l  lw 3lt rgb "blue" notitle

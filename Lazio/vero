@@ -1,0 +1,40 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "tamponivero.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+########################################################################################
+
+set ylabel "tamponi positivi"           @labelFONT
+set ytic                    @scaleFONT 
+set xtic scale 0                @scaleFONT
+set size 1.0, 1.0
+set yrange [0:]
+########################################################################################
+set xdata time
+set timefmt "%m/%d/%y"
+set format x "%d/%m"
+set timefmt "%m/%d/%y %H:%M"
+set format y "%g%%"
+set xtic 1500000
+
+set grid
+set key top center
+#set style fill solid 1.0 border -1
+#set boxwidth 0.6 relative
+
+#####################################################################################
+set y2label 'tamponi giornalieri' @labelFONT
+set y2tic
+set y2range [0:]
+
+set xrange ["04/25/2020":]
+plot "tassovirus.dat" using 1:20 with boxes lw 5 lt rgb "#7fffd4" ti "casi testati (media 7gg)" axes x1y2, "tassovirus.dat" using 1:19 with point lw 3 lt rgb "green" ti "casi testati" axes x1y2, "tassovirus.dat" using 1:22 w l lt rgb "red" lw 3 ti "tasso positivi (media 7gg)",  "tassovirus.dat" using 1:21 w p lt rgb "black" lw 3 ti "tasso positivi"
+
+set output "tamponiverogiu.png"
+set xrange ["06/04/2020":]
+plot "tassovirus.dat" using 1:20 with boxes lw 5 lt rgb "#7fffd4" ti "casi testati (media 7gg)" axes x1y2, "tassovirus.dat" using 1:19 with point lw 3 lt rgb "green" ti "casi testati" axes x1y2, "tassovirus.dat" using 1:22 w l lt rgb "red" lw 3 ti "tasso positivi (media 7gg)",  "tassovirus.dat" using 1:21 w p lt rgb "black" lw 3 ti "tasso positivi"

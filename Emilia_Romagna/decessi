@@ -20,6 +20,8 @@ set timefmt "%m/%d/%y"
 set format x "%d/%m"
 set timefmt "%m/%d/%y %H:%M"
 
+set xtic 1200000
+set xrange ["02/23/2020":]
 set grid
 set key top center
 set style fill solid 1.0 border -1

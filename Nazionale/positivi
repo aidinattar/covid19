@@ -20,20 +20,22 @@ set timefmt "%m/%d/%y"
 set format x "%d/%m"
 set timefmt "%m/%d/%y %H:%M"
 set format y "%g%%"
+set xtic 1200000
 
 set grid
 set key top center
-set style fill solid 1.0 border -1
-set boxwidth 0.6 relative
+#set style fill solid 1.0 border -1
+#set boxwidth 0.6 relative
 
 #####################################################################################
 set y2label 'tamponi giornalieri' @labelFONT
 set y2tic
 set y2range [0:]
 
-plot  "tassovirus.dat" using 1:4 with boxes  lt rgb "#7fffd4" ti "tamponi totali" axes x1y2, "tassovirus.dat" using 1:3 w p lt rgb "black" lw 3 ti "tasso tamponi positivi", "tassovirus.dat" using 1:14 w l lt rgb "red" lw 3 ti "tasso tamponi positivi (media 7gg)"
+set xrange ["02/23/2020":]
+plot "tassovirus.dat" using 1:18 with boxes lw 3 lt rgb "#7fffd4" ti "tamponi totali (media 7 gg)" axes x1y2, "tassovirus.dat" using 1:4 with point lw 3 lt rgb "green" ti "tamponi giornalieri" axes x1y2, "tassovirus.dat" using 1:14 w l lt rgb "red" lw 3 ti "tasso tamponi positivi (media 7gg)",  "tassovirus.dat" using 1:3 w p lt rgb "black" lw 1 ti "tasso tamponi positivi"
 
 #####################################################################################
 set output "tamponigiu.png"
 set xrange ["06/04/2020":]
-plot  "tassovirus.dat" using 1:4 with boxes  lt rgb "#7fffd4" ti "tamponi totali" axes x1y2, "tassovirus.dat" using 1:3 w p lt rgb "black" lw 3 ti "tasso tamponi positivi", "tassovirus.dat" using 1:14 w l lt rgb "red" lw 3 ti "tasso tamponi positivi (media 7gg)"
+plot "tassovirus.dat" using 1:18 with boxes lw 5 lt rgb "#7fffd4" ti "tamponi totali (media 7 gg)" axes x1y2, "tassovirus.dat" using 1:4 with point lw 3 lt rgb "green" ti "tamponi giornalieri" axes x1y2, "tassovirus.dat" using 1:14 w l lt rgb "red" lw 3 ti "tasso tamponi positivi (media 7gg)",  "tassovirus.dat" using 1:3 w p lt rgb "black" lw 3 ti "tasso tamponi positivi"
