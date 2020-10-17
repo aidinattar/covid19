@@ -1,0 +1,25 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "expo.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+
+f(x) =  a * exp ( b*x )
+g(x) =  c * exp ( d*x )
+a = 40
+b = 0.032
+c = 620
+d = 0.027
+fit f(x) 'prova.dat' usi 1:22 via a,b
+fit g(x) 'prova.dat' usi 1:23 via c,d
+
+set key top left	@labelFONT
+set xlabel "days elapsed"	@labelFONT
+set grid
+set logscale y
+
+plot f(x) ti "exponential fit", "prova.dat" usi 1:3 w p ti "total hospedalized", g(x) ti "exponential fit", "prova.dat" usi 1:2 w p ti "icu", 6458
