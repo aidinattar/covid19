@@ -17,9 +17,13 @@ d = 0.027
 fit f(x) 'prova.dat' usi 1:22 via a,b
 fit g(x) 'prova.dat' usi 1:23 via c,d
 
-set key top left	@labelFONT
+#fit f(x) 'prova.dat' usi 1:2 via a,b
+#fit g(x) 'prova.dat' usi 1:3 via c,d
+
+
+set key bottom right	@labelFONT
 set xlabel "days elapsed"	@labelFONT
 set grid
-set logscale y
+#set logscale y
 
-plot f(x) ti "exponential fit", "prova.dat" usi 1:3 w p ti "total hospedalized", g(x) ti "exponential fit", "prova.dat" usi 1:2 w p ti "icu", 6458
+plot f(x) ti "exponential fit", "prova.dat" usi 1:3 w p ti "total hospedalized", g(x) ti "exponential fit", "prova.dat" usi 1:2 w p ti "icu", 6458 ti "total icu" lt rgb "black"
