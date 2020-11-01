@@ -1,0 +1,26 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "tamponi.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+########################################################################################
+
+set ylabel "tamponi giornalieri"           @labelFONT
+set ytic                    @scaleFONT 
+set xtic scale 0                @scaleFONT
+set size 1.0, 1.0
+set yrange [0:]
+########################################################################################
+set grid
+set key top center
+#set style fill solid 1.0 border -1
+#set boxwidth 0.6 relative
+set logscale y
+set yrange[100:]
+########################################################################################
+
+plot "tamponi.dat" usi 1:2 w l lw 3 ti "emilia romagna", "tamponi.dat" usi 1:3 w l lw 3 ti "veneto", "tamponi.dat" usi 1:4 w l lw 3 ti "lombardia", "tamponi.dat" usi 1:5 w l lw 3 ti "lazio"
