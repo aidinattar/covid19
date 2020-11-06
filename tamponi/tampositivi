@@ -1,0 +1,30 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "tampositivi.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+########################################################################################
+set title "tamponi per positivo di alcune regioni italiane"
+set ylabel "tamponi per positivo"           @labelFONT
+set ytic                    @scaleFONT 
+#set xtic scale 0                @scaleFONT
+set size 1.0, 1.0
+########################################################################################
+set xdata time
+set timefmt "%d/%m/%y"
+set format x "%d/%m"
+set timefmt "%d/%m/%y %H:%M"
+#set xrange["01/08/2020":]
+#set xtic 1000000
+
+set grid
+set key top center
+set logscale y
+#set yrange[000:]
+########################################################################################
+
+plot "tampositivi.dat" usi 1:3 smooth csplines lw 3 lt rgb "red" ti "emilia romagna", "tampositivi.dat" usi 1:4 smooth csplines lw 3 lt rgb "black" ti "veneto", "tampositivi.dat" usi 1:5 smooth csplines lw 3 lt rgb "green" ti "lombardia", "tampositivi.dat" usi 1:6 smooth csplines lw 3 lt rgb "purple" ti "lazio", "tampositivi.dat" usi 1:7 smooth csplines lw 3 lt rgb "yellow" ti "piemonte", "tampositivi.dat" usi 1:8 smooth csplines lw 3 lt rgb "orange" ti "campania", "tampositivi.dat" usi 1:9 smooth csplines lw 3 lt rgb "brown" ti "liguria" 
