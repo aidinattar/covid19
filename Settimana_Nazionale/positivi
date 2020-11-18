@@ -1,0 +1,83 @@
+set terminal pngcairo size 1500, 900 enhanced dash
+set output "tamponi.png"
+
+set macro
+labelFONT="font 'arial,22'"
+scaleFONT="font 'arial,12'"
+scaleFONT2="font 'helvetica,13'"
+keyFONT="font 'arial,12'"
+
+########################################################################################
+
+set ylabel "tamponi positivi"           @labelFONT
+set ytic                    @scaleFONT 
+set xtic scale 0                @scaleFONT
+set size 1.0, 1.0
+set yrange [0:]
+########################################################################################
+set xlabel "settimana"
+set xtic 1
+
+set grid
+set key top center
+set style fill solid 1.0 border -1
+set boxwidth 0.6 relative
+
+#####################################################################################
+set y2label 'tamponi giornalieri' @labelFONT
+set y2tic
+set y2range [0:]
+
+plot "tassovirus.dat" using 1:17 with boxes lw 3 lt rgb "#7fffd4" ti "tamponi settimanali" axes x1y2, "tassovirus.dat" using 1:20 smooth csplines lw 3 lt rgb "red" ti "tasso positivita'" axes x1y1
+
+#####################################################################################
+set output "tamponivero.png"
+#set xrange [9:]
+plot "tassovirus.dat" using 1:19 with boxes lw 3 lt rgb "#7fffd4" ti "casi testati" axes x1y2, "tassovirus.dat" using 1:21 smooth csplines lw 3 lt rgb "red" ti "tasso positivita' casi testati" axes x1y1
+
+unset xrange
+unset y2label
+unset y2tic
+#####################################################################################
+set output "positivi.png"
+set ylabel "casi settimanali"
+plot "tassovirus.dat" using 1:18 with boxes lw 3 lt rgb "#7fffd4" ti "positivi settimanali" axes x1y1
+
+set output "morti.png"
+set arrow from 29, 500 to 29, 160
+set label "zangrillo: non credo\nin una seconda ondata" at 26.5, 750
+set arrow from 14, 2000 to 14, 950
+set label "zangrillo: il coronavirus\nclinicamente non esiste più" at 11.5,2250
+set arrow from 24, 500 to 24, 150
+set label "bassetti: il virus non\nci può fare più paura" at 21.5, 700
+set arrow from 34, 1300 to 35, 500
+set label "salvini: proroga stato di\nemergenza? non c'è\nnessuna emergenza" at 31, 1700
+set arrow from 26.7, 1000 to 26, 250
+set label "meloni: proroga stato\ndi emergenza? pazzi\nirresponsabili!" at 25.5, 1450
+
+set ylabel "deceduti settimanali"
+plot "tassovirus.dat" using 1:22 with boxes lw 3 lt rgb "red" ti "deceduti settimanali" axes x1y1
+unset label
+unset arrow
+
+#####################################################################################
+set output "ospedali.png"
+
+set ylabel "ospedalizzati"
+
+plot "tassovirus.dat" using 1:4 with boxes lw 3 lt rgb "green" ti "totale ospedalizzati" axes x1y1, "tassovirus.dat" using 1:3 with boxes lw 3 lt rgb "red" ti "terapie intensive" axes x1y1
+########################################################################################
+set output "totale.png"
+set ylabel "casi totali"
+set y2label "casi attivi"
+set y2tic
+plot  "tassovirus.dat" using 1:13 w boxes lt rgb "yellow" lw 3 ti "totale casi", "tassovirus.dat" using 1:($4+$9+$10) with boxes  lt rgb "orange" lw 3 ti "ricoverati con sintomi", "tassovirus.dat" using 1:($3+$9+$10) w boxes lt rgb "red" lw 3 ti "terapie intensive", "tassovirus.dat" using 1:($9+$10) w boxes lt rgb "green" lw 3 ti "guariti", "tassovirus.dat" using 1:10 w boxes lw 3 lt rgb "black" ti "deceduti","tassovirus.dat" using 1:6 w l lt rgb "violet" lw 3 ti "casi attivi" axes x1y2
+
+#######################################################################################
+set output "Rt.png"
+
+unset y2label
+unset y2tic
+set ylabel "coefficiente Rt"
+set xrange[4:]
+plot "tassovirus.dat" using 1:23 smooth csplines lt rgb "black" lw 3 ti "Rt casi", "tassovirus.dat" using 1:24 smooth csplines lt rgb "red" lw 3 ti "Rt ospedalizzati", "tassovirus.dat" using 1:25 smooth csplines lt rgb "green" lw 3 ti "Rt tasso"
