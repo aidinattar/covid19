@@ -67,7 +67,8 @@ plot  "tassovirus.dat" using 1:13 w boxes lt rgb "yellow" lw 3 ti "totale casi",
 set output "Rt.png"
 
 unset y2label
-unset y2tic
+unset y2tic 
+set ytic 0.2
 set ylabel "coefficiente Rt"
 set xrange[4:]
 plot "tassovirus.dat" using 1:23 smooth csplines lt rgb "black" lw 3 ti "Rt casi", "tassovirus.dat" using 1:24 smooth csplines lt rgb "red" lw 3 ti "Rt ospedalizzati", "tassovirus.dat" using 1:25 smooth csplines lt rgb "green" lw 3 ti "Rt tasso"
