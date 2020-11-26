@@ -72,3 +72,14 @@ set ytic 0.2
 set ylabel "coefficiente Rt"
 set xrange[4:]
 plot "tassovirus.dat" using 1:23 smooth csplines lt rgb "black" lw 3 ti "Rt casi", "tassovirus.dat" using 1:24 smooth csplines lt rgb "red" lw 3 ti "Rt ospedalizzati", "tassovirus.dat" using 1:25 smooth csplines lt rgb "green" lw 3 ti "Rt tasso"
+#######################################################################################
+set output "variazione.png"
+unset yrange
+set ytic auto
+unset xrange
+set style fill transparent solid 0.5 noborder
+set ylabel "variazione percentuale"
+set title "variazione percentuale rispetto alla media delle ultime 4 settimane"
+plot "tassovirus.dat" using 1:27 w boxes lt rgb "green" lw 3 ti "variazione casi", "tassovirus.dat" using 1:(-$29) w boxes lt rgb "red" lw 3 ti "(-) variazione morti"
+#######################################################################################
+

@@ -44,16 +44,6 @@ set ylabel "casi settimanali"
 plot "tassovirus.dat" using 1:18 with boxes lw 3 lt rgb "#7fffd4" ti "positivi settimanali" axes x1y1
 
 set output "morti.png"
-set arrow from 29, 500 to 29, 160
-set label "zangrillo: non credo\nin una seconda ondata" at 26.5, 750
-set arrow from 14, 2000 to 14, 950
-set label "zangrillo: il coronavirus\nclinicamente non esiste più" at 11.5,2250
-set arrow from 24, 500 to 24, 150
-set label "bassetti: il virus non\nci può fare più paura" at 21.5, 700
-set arrow from 34, 1300 to 35, 500
-set label "salvini: proroga stato di\nemergenza? non c'è\nnessuna emergenza" at 31, 1700
-set arrow from 26.7, 1000 to 26, 250
-set label "meloni: proroga stato\ndi emergenza? pazzi\nirresponsabili!" at 25.5, 1450
 
 set ylabel "deceduti settimanali"
 plot "tassovirus.dat" using 1:22 with boxes lw 3 lt rgb "red" ti "deceduti settimanali" axes x1y1
@@ -81,13 +71,3 @@ unset y2tic
 set ylabel "coefficiente Rt"
 set xrange[4:]
 plot "tassovirus.dat" using 1:23 smooth csplines lt rgb "black" lw 3 ti "Rt casi", "tassovirus.dat" using 1:24 smooth csplines lt rgb "red" lw 3 ti "Rt ospedalizzati", "tassovirus.dat" using 1:25 smooth csplines lt rgb "green" lw 3 ti "Rt tasso"
-#######################################################################################
-set output "variazione.png"
-unset yrange
-unset xrange
-set style fill transparent solid 0.5 noborder
-set ylabel "variazione percentuale"
-set title "variazione percentuale rispetto alla media delle ultime 4 settimane"
-plot "tassovirus.dat" using 1:27 w boxes lt rgb "green" lw 3 ti "variazione casi", "tassovirus.dat" using 1:(-$29) w boxes lt rgb "red" lw 3 ti "(-) variazione morti"
-#######################################################################################
-
