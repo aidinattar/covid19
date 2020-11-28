@@ -83,3 +83,7 @@ set title "variazione percentuale rispetto alla media delle ultime 4 settimane"
 plot "tassovirus.dat" using 1:27 w boxes lt rgb "green" lw 3 ti "variazione casi", "tassovirus.dat" using 1:(-$29) w boxes lt rgb "red" lw 3 ti "(-) variazione morti"
 #######################################################################################
 
+set output "variazionehosp.png"
+set ylabel "variazione percentuale"
+set title "variazione percentuale ospedalizzati rispetto alla media delle ultime 4 settimane"
+plot "tassovirus.dat" using 1:30 w boxes lt rgb "green" lw 3 ti "variazione ospedalizzati", "tassovirus.dat" using 1:31 w boxes lt rgb "red" lw 3 ti "variazione terapie intensive"

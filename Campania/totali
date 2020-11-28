@@ -1,5 +1,7 @@
 set terminal pngcairo size 1500, 900 enhanced dash
 set output "totali.png"
+#set terminal postscript enhanced color size 15, 8.5
+#set output "totali.ps"
 
 set macro
 labelFONT="font 'arial,22'"
@@ -23,8 +25,7 @@ set timefmt "%m/%d/%y %H:%M"
 
 set grid
 set key top center
-#set style fill solid 1.0 border 0
-set boxwidth 0.6 relative
+set style fill solid 2 
 
 #####################################################################################
 set y2label 'casi attivi' @labelFONT
@@ -36,8 +37,9 @@ plot  "tassovirus.dat" using 1:26 w boxes lt rgb "yellow" lw 3 ti "totale casi",
 #####################################################################################
 set output "totaligiu.png"
 set xrange ["06/01/2020":]
-#set boxwidth 1 relative
-set style fill solid 1.0 border -2
+unset boxwidth
+#unset style
+set style fill solid 2 
 
 plot  "tassovirus.dat" using 1:26 w boxes lt rgb "yellow" lw 3 ti "totale casi", "tassovirus.dat" using 1:($7+$11+$12) with boxes  lt rgb "orange" lw 3 ti "ricoverati con sintomi", "tassovirus.dat" using 1:($6+$11+$12) w boxes lt rgb "red" lw 3 ti "terapie intensive", "tassovirus.dat" using 1:($11+$12) w boxes lt rgb "green" lw 3 ti "guariti", "tassovirus.dat" using 1:12 w boxes lw 3 lt rgb "black" ti "deceduti","tassovirus.dat" using 1:8 w l lt rgb "violet" lw 3 ti "casi attivi" axes x1y2
 
