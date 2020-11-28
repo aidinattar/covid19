@@ -92,7 +92,23 @@ plot "tassovirus.dat" using 1:27 w boxes lt rgb "green" lw 3 ti "variazione casi
 #######################################################################################
 
 set output "variazionehosp.png"
-set ylabel "variazione percentuale"
-set title "variazione percentuale ospedalizzati rispetto alla media delle ultime 4 settimane"
+set ylabel "variazione"
+set title "saldo ospedalizzazioni"
 plot "tassovirus.dat" using 1:30 w boxes lt rgb "green" lw 3 ti "variazione ospedalizzati", "tassovirus.dat" using 1:31 w boxes lt rgb "red" lw 3 ti "variazione terapie intensive"
+
+#########################################################################
+
+set output "morti_contagiati.png"
+set ylabel "ratio (%)"
+set xrange [7:]
+set title "rapporto percentuale tra morti della settimana e contagiati di due settimane prima"
+plot "tassovirus.dat" using 1:32 w boxes lt rgb "red" lw 3 ti "rapporto morti/contagiati"
+#########################################################################
+
+set output "morti_contagiati_cum.png"
+set ylabel "ratio (%)"
+set xrange [5.5:]
+set yrange [0:]
+set title "rapporto percentuale tra morti totali e contagiati totali relativi a due settimane prima"
+plot "tassovirus.dat" using 1:33 w boxes lt rgb "red" lw 3 ti "rapporto morti/contagiati"
 
