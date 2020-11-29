@@ -30,11 +30,12 @@ set style fill transparent solid 0.5 noborder
 f(x) = 825
 g(x) = 47634
 
-plot  "tassovirus.dat" using 1:7 with boxes  lt rgb "green"  ti "ricoverati con sintomi", "tassovirus.dat" using 1:6 w boxes lt rgb "red"  ti "terapie intensive", f(x) ti "totale posti terapia intensiva" lt rgb "black" lw 3
+plot  "tassovirus.dat" using 1:7 with boxes  lt rgb "green"  ti "ricoverati con sintomi", "tassovirus.dat" using 1:6 w boxes lt rgb "red"  ti "terapie intensive"#, f(x) ti "totale posti terapia intensiva" lt rgb "black" lw 3
 
 #####################################################################################
 set output "ospedaligiu.png"
 set xrange ["07/04/2020":]
 
-set boxwidth 0.6 relative
+#set boxwidth 0.6 relative
 plot  "tassovirus.dat" using 1:7 with boxes  lt rgb "green" lw 2 ti "ricoverati con sintomi", "tassovirus.dat" using 1:6 w boxes lt rgb "red" lw 2 ti "terapie intensive"#, f(x) ti "totale posti terapia intensiva" lt rgb "black" lw 3
+
