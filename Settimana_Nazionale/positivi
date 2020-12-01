@@ -44,16 +44,16 @@ set ylabel "casi settimanali"
 plot "tassovirus.dat" using 1:18 with boxes lw 3 lt rgb "#7fffd4" ti "positivi settimanali" axes x1y1
 
 set output "morti.png"
-set arrow from 29, 500 to 29, 160
-set label "zangrillo: non credo\nin una seconda ondata" at 26.5, 750
-set arrow from 14, 2000 to 14, 950
-set label "zangrillo: il coronavirus\nclinicamente non esiste più" at 11.5,2250
-set arrow from 24, 500 to 24, 150
-set label "bassetti: il virus non\nci può fare più paura" at 21.5, 700
-set arrow from 34, 1300 to 35, 500
-set label "salvini: proroga stato di\nemergenza? non c'è\nnessuna emergenza" at 31, 1700
-set arrow from 26.7, 1000 to 26, 250
-set label "meloni: proroga stato\ndi emergenza? pazzi\nirresponsabili!" at 25.5, 1450
+#set arrow from 29, 500 to 29, 160
+#set label "zangrillo: non credo\nin una seconda ondata" at 26.5, 750
+#set arrow from 14, 2000 to 14, 950
+#set label "zangrillo: il coronavirus\nclinicamente non esiste più" at 11.5,2250
+#set arrow from 24, 500 to 24, 150
+#set label "bassetti: il virus non\nci può fare più paura" at 21.5, 700
+#set arrow from 34, 1300 to 35, 500
+#set label "salvini: proroga stato di\nemergenza? non c'è\nnessuna emergenza" at 31, 1700
+#set arrow from 26.7, 1000 to 26, 250
+#set label "meloni: proroga stato\ndi emergenza? pazzi\nirresponsabili!" at 25.5, 1450
 
 set ylabel "deceduti settimanali"
 plot "tassovirus.dat" using 1:22 with boxes lw 3 lt rgb "red" ti "deceduti settimanali" axes x1y1
