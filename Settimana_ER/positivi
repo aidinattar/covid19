@@ -94,7 +94,7 @@ set output "morti_contagiati.png"
 set ylabel "ratio (%)"
 set xrange [7:]
 set ytics 1
-set yrange [0:30]
+set yrange [0:24]
 set title "rapporto percentuale tra morti della settimana e contagiati di due settimane prima"
 plot "tassovirus.dat" using 1:32 w boxes lt rgb "red" lw 3 ti "rapporto morti/contagiati"
 #########################################################################
